@@ -1,0 +1,30 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config MY_FFT
+	tristate "\"FFT\" example"
+	default n
+	select LIBM
+	---help---
+		Enable the \"FFT\" example
+
+if MY_FFT
+
+config EXAMPLES_FFT_PROGNAME
+	string "Program name"
+	default "FFT"
+	---help---
+		This is the name of the program that will be used when the NSH ELF
+		program is installed.
+
+config EXAMPLES_FFT_PRIORITY
+	int "FFT task priority"
+	default 100
+
+config EXAMPLES_FFT_STACKSIZE
+	int "FFT stack size"
+	default DEFAULT_TASK_STACKSIZE
+
+endif
